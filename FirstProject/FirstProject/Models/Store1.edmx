@@ -1,0 +1,1139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Store1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Ambalaj">
+          <Key>
+            <PropertyRef Name="IDAmbalaj" />
+          </Key>
+          <Property Name="IDAmbalaj" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Denumire" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Persoana">
+          <Key>
+            <PropertyRef Name="IDPersoana" />
+          </Key>
+          <Property Name="IDPersoana" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nume" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Produse">
+          <Key>
+            <PropertyRef Name="IDProdus" />
+          </Key>
+          <Property Name="IDProdus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDAmbalaj" Type="int" />
+          <Property Name="IDPersoana" Type="int" />
+          <Property Name="IDTipProdus" Type="int" />
+          <Property Name="DataAmbalare" Type="datetime" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Receptie">
+          <Key>
+            <PropertyRef Name="IDReceptie" />
+          </Key>
+          <Property Name="IDReceptie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDProdus" Type="int" />
+          <Property Name="IDPersoana" Type="int" />
+          <Property Name="DataRecetie" Type="datetime" />
+          <Property Name="Observatii" Type="nvarchar" MaxLength="50" />
+          <Property Name="Rebut" Type="bit" />
+        </EntityType>
+        <EntityType Name="TipProdus">
+          <Key>
+            <PropertyRef Name="IDTipProdus" />
+          </Key>
+          <Property Name="IDTipProdus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nume" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UnitateMasura" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PretKg" Type="int" Nullable="false" />
+          <Property Name="Cantitate" Type="int" Nullable="false" />
+          <Property Name="TermenGarantie" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vanzari">
+          <Key>
+            <PropertyRef Name="IDVanzari" />
+          </Key>
+          <Property Name="IDVanzari" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDProdus" Type="int" />
+          <Property Name="DataVanzare" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Produse_Ambalaj">
+          <End Role="Ambalaj" Type="Self.Ambalaj" Multiplicity="0..1" />
+          <End Role="Produse" Type="Self.Produse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ambalaj">
+              <PropertyRef Name="IDAmbalaj" />
+            </Principal>
+            <Dependent Role="Produse">
+              <PropertyRef Name="IDAmbalaj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Produse_Persoana">
+          <End Role="Persoana" Type="Self.Persoana" Multiplicity="0..1" />
+          <End Role="Produse" Type="Self.Produse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persoana">
+              <PropertyRef Name="IDPersoana" />
+            </Principal>
+            <Dependent Role="Produse">
+              <PropertyRef Name="IDPersoana" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Produse_TipProdus">
+          <End Role="TipProdus" Type="Self.TipProdus" Multiplicity="0..1" />
+          <End Role="Produse" Type="Self.Produse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipProdus">
+              <PropertyRef Name="IDTipProdus" />
+            </Principal>
+            <Dependent Role="Produse">
+              <PropertyRef Name="IDTipProdus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Receptie_Persoana">
+          <End Role="Persoana" Type="Self.Persoana" Multiplicity="0..1" />
+          <End Role="Receptie" Type="Self.Receptie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persoana">
+              <PropertyRef Name="IDPersoana" />
+            </Principal>
+            <Dependent Role="Receptie">
+              <PropertyRef Name="IDPersoana" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Receptie_Produse">
+          <End Role="Produse" Type="Self.Produse" Multiplicity="0..1" />
+          <End Role="Receptie" Type="Self.Receptie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produse">
+              <PropertyRef Name="IDProdus" />
+            </Principal>
+            <Dependent Role="Receptie">
+              <PropertyRef Name="IDProdus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vanzari_Produse">
+          <End Role="Produse" Type="Self.Produse" Multiplicity="0..1" />
+          <End Role="Vanzari" Type="Self.Vanzari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produse">
+              <PropertyRef Name="IDProdus" />
+            </Principal>
+            <Dependent Role="Vanzari">
+              <PropertyRef Name="IDProdus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="actualizarePret" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDTipProdus" Type="int" Mode="In" />
+          <Parameter Name="PretKg" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CodQR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDProdus" Type="int" Mode="In" />
+        </Function>
+        <Function Name="completVerificareVanzari" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDVanzari" Type="int" Mode="InOut" />
+          <Parameter Name="IDProdus" Type="int" Mode="In" />
+        </Function>
+        <Function Name="deleteAmbalaj" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDAmbalaj" Type="int" Mode="In" />
+        </Function>
+        <Function Name="deletePersoana" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDPersoana" Type="int" Mode="In" />
+        </Function>
+        <Function Name="deleteProduse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDProdus" Type="int" Mode="In" />
+        </Function>
+        <Function Name="deleteReceptie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDReceptie" Type="int" Mode="In" />
+        </Function>
+        <Function Name="deleteTipProduse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDTipProdus" Type="int" Mode="In" />
+        </Function>
+        <Function Name="deleteVanzari" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDVanzari" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="InfoCod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodQR" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="insertAmbalaj" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Denumire" Type="varchar" Mode="In" />
+          <Parameter Name="IDAmbalaj" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="insertPersoana" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nume" Type="varchar" Mode="In" />
+          <Parameter Name="IDPersoana" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="insertProduse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDProdus" Type="int" Mode="InOut" />
+          <Parameter Name="IDAmbalaj" Type="int" Mode="In" />
+          <Parameter Name="IDPersoana" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="varchar" Mode="In" />
+          <Parameter Name="IDTipProdus" Type="int" Mode="In" />
+        </Function>
+        <Function Name="insertReceptie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDReceptie" Type="int" Mode="InOut" />
+          <Parameter Name="IDProdus" Type="int" Mode="In" />
+          <Parameter Name="IDPersoana" Type="int" Mode="In" />
+          <Parameter Name="Observatii" Type="varchar" Mode="In" />
+          <Parameter Name="Rebut" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="insertTipProduse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nume" Type="varchar" Mode="In" />
+          <Parameter Name="UnitateMasura" Type="nvarchar" Mode="In" />
+          <Parameter Name="PretKg" Type="int" Mode="In" />
+          <Parameter Name="Cantitate" Type="int" Mode="In" />
+          <Parameter Name="TermenGarantie" Type="int" Mode="In" />
+          <Parameter Name="IDTipProdus" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="insertVanzari" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDVanzari" Type="int" Mode="InOut" />
+          <Parameter Name="IDProdus" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Login_Sel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="modificareStatusProdus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDProdus" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Project_Del" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Project_Ins" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="InOut" />
+          <Parameter Name="Echipament" Type="nvarchar" Mode="In" />
+          <Parameter Name="Projects" Type="nvarchar" Mode="In" />
+          <Parameter Name="PartNOPainting" Type="nvarchar" Mode="In" />
+          <Parameter Name="PartNOEngraving" Type="nvarchar" Mode="In" />
+          <Parameter Name="PartNOEOL" Type="nvarchar" Mode="In" />
+          <Parameter Name="Cycletimesec1pcs" Type="float" Mode="In" />
+          <Parameter Name="Cycletimemin100pcs" Type="float" Mode="In" />
+        </Function>
+        <Function Name="Project_Sel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Project_Upd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="Echipament" Type="nvarchar" Mode="In" />
+          <Parameter Name="Projects" Type="nvarchar" Mode="In" />
+          <Parameter Name="PartNOPainting" Type="nvarchar" Mode="In" />
+          <Parameter Name="PartNOEngraving" Type="nvarchar" Mode="In" />
+          <Parameter Name="PartNOEOL" Type="nvarchar" Mode="In" />
+          <Parameter Name="Cycletimesec1pcs" Type="float" Mode="In" />
+          <Parameter Name="Cycletimemin100pcs" Type="float" Mode="In" />
+        </Function>
+        <Function Name="selectAmbalaj" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="selectPersoana" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="selectProdus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="selectReceptie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="selectTipProduse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="selectVanzari" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="updateAmbalaj" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Denumire" Type="varchar" Mode="In" />
+          <Parameter Name="IDAmbalaj" Type="int" Mode="In" />
+        </Function>
+        <Function Name="updatePersoana" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nume" Type="varchar" Mode="In" />
+          <Parameter Name="IDPersoana" Type="int" Mode="In" />
+        </Function>
+        <Function Name="updateProduse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDProdus" Type="int" Mode="In" />
+          <Parameter Name="IDAmbalaj" Type="int" Mode="In" />
+          <Parameter Name="DataAmbalare" Type="datetime" Mode="In" />
+          <Parameter Name="Status" Type="varchar" Mode="In" />
+          <Parameter Name="IDTipProdus" Type="int" Mode="In" />
+        </Function>
+        <Function Name="updateReceptie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDReceptie" Type="int" Mode="In" />
+          <Parameter Name="IDProdus" Type="int" Mode="In" />
+          <Parameter Name="IDPersoana" Type="int" Mode="In" />
+          <Parameter Name="DataReceptie" Type="datetime" Mode="In" />
+          <Parameter Name="Observatii" Type="varchar" Mode="In" />
+          <Parameter Name="Rebut" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="updateTipProduse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nume" Type="varchar" Mode="In" />
+          <Parameter Name="UnitateMasura" Type="nvarchar" Mode="In" />
+          <Parameter Name="PretKg" Type="int" Mode="In" />
+          <Parameter Name="Cantitate" Type="int" Mode="In" />
+          <Parameter Name="TermenGarantie" Type="int" Mode="In" />
+          <Parameter Name="IDTipProdus" Type="int" Mode="In" />
+        </Function>
+        <Function Name="updateVanzari" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDVanzari" Type="int" Mode="In" />
+          <Parameter Name="IDProdus" Type="int" Mode="In" />
+          <Parameter Name="DataVanzare" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="VAR1VerificareValabilitate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDProdus" Type="int" Mode="In" />
+        </Function>
+        <Function Name="VAR1VerificareVanzari" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDVanzari" Type="int" Mode="InOut" />
+          <Parameter Name="IDProdus" Type="int" Mode="In" />
+        </Function>
+        <Function Name="verificareLaReceptie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDReceptie" Type="int" Mode="InOut" />
+          <Parameter Name="IDProdus" Type="int" Mode="In" />
+        </Function>
+        <Function Name="verificareStoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nume" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="Store1ModelStoreContainer">
+          <EntitySet Name="Ambalaj" EntityType="Self.Ambalaj" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Persoana" EntityType="Self.Persoana" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Produse" EntityType="Self.Produse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Receptie" EntityType="Self.Receptie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipProdus" EntityType="Self.TipProdus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vanzari" EntityType="Self.Vanzari" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Produse_Ambalaj" Association="Self.FK_Produse_Ambalaj">
+            <End Role="Ambalaj" EntitySet="Ambalaj" />
+            <End Role="Produse" EntitySet="Produse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Produse_Persoana" Association="Self.FK_Produse_Persoana">
+            <End Role="Persoana" EntitySet="Persoana" />
+            <End Role="Produse" EntitySet="Produse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Produse_TipProdus" Association="Self.FK_Produse_TipProdus">
+            <End Role="TipProdus" EntitySet="TipProdus" />
+            <End Role="Produse" EntitySet="Produse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Receptie_Persoana" Association="Self.FK_Receptie_Persoana">
+            <End Role="Persoana" EntitySet="Persoana" />
+            <End Role="Receptie" EntitySet="Receptie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Receptie_Produse" Association="Self.FK_Receptie_Produse">
+            <End Role="Produse" EntitySet="Produse" />
+            <End Role="Receptie" EntitySet="Receptie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vanzari_Produse" Association="Self.FK_Vanzari_Produse">
+            <End Role="Produse" EntitySet="Produse" />
+            <End Role="Vanzari" EntitySet="Vanzari" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Store1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Ambalaj">
+          <Key>
+            <PropertyRef Name="IDAmbalaj" />
+          </Key>
+          <Property Name="IDAmbalaj" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Denumire" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Produses" Relationship="Self.FK_Produse_Ambalaj" FromRole="Ambalaj" ToRole="Produse" />
+        </EntityType>
+        <EntityType Name="Persoana">
+          <Key>
+            <PropertyRef Name="IDPersoana" />
+          </Key>
+          <Property Name="IDPersoana" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nume" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Produses" Relationship="Self.FK_Produse_Persoana" FromRole="Persoana" ToRole="Produse" />
+          <NavigationProperty Name="Recepties" Relationship="Self.FK_Receptie_Persoana" FromRole="Persoana" ToRole="Receptie" />
+        </EntityType>
+        <EntityType Name="Produse">
+          <Key>
+            <PropertyRef Name="IDProdus" />
+          </Key>
+          <Property Name="IDProdus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDAmbalaj" Type="Int32" />
+          <Property Name="IDPersoana" Type="Int32" />
+          <Property Name="IDTipProdus" Type="Int32" />
+          <Property Name="DataAmbalare" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Ambalaj" Relationship="Self.FK_Produse_Ambalaj" FromRole="Produse" ToRole="Ambalaj" />
+          <NavigationProperty Name="Persoana" Relationship="Self.FK_Produse_Persoana" FromRole="Produse" ToRole="Persoana" />
+          <NavigationProperty Name="TipProdu" Relationship="Self.FK_Produse_TipProdus" FromRole="Produse" ToRole="TipProdus" />
+          <NavigationProperty Name="Recepties" Relationship="Self.FK_Receptie_Produse" FromRole="Produse" ToRole="Receptie" />
+          <NavigationProperty Name="Vanzaris" Relationship="Self.FK_Vanzari_Produse" FromRole="Produse" ToRole="Vanzari" />
+        </EntityType>
+        <EntityType Name="Receptie">
+          <Key>
+            <PropertyRef Name="IDReceptie" />
+          </Key>
+          <Property Name="IDReceptie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDProdus" Type="Int32" />
+          <Property Name="IDPersoana" Type="Int32" />
+          <Property Name="DataRecetie" Type="DateTime" Precision="3" />
+          <Property Name="Observatii" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Rebut" Type="Boolean" />
+          <NavigationProperty Name="Persoana" Relationship="Self.FK_Receptie_Persoana" FromRole="Receptie" ToRole="Persoana" />
+          <NavigationProperty Name="Produse" Relationship="Self.FK_Receptie_Produse" FromRole="Receptie" ToRole="Produse" />
+        </EntityType>
+        <EntityType Name="TipProdu">
+          <Key>
+            <PropertyRef Name="IDTipProdus" />
+          </Key>
+          <Property Name="IDTipProdus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nume" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UnitateMasura" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PretKg" Type="Int32" Nullable="false" />
+          <Property Name="Cantitate" Type="Int32" Nullable="false" />
+          <Property Name="TermenGarantie" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Produses" Relationship="Self.FK_Produse_TipProdus" FromRole="TipProdus" ToRole="Produse" />
+        </EntityType>
+        <EntityType Name="Vanzari">
+          <Key>
+            <PropertyRef Name="IDVanzari" />
+          </Key>
+          <Property Name="IDVanzari" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDProdus" Type="Int32" />
+          <Property Name="DataVanzare" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Produse" Relationship="Self.FK_Vanzari_Produse" FromRole="Vanzari" ToRole="Produse" />
+        </EntityType>
+        <Association Name="FK_Produse_Ambalaj">
+          <End Role="Ambalaj" Type="Self.Ambalaj" Multiplicity="0..1" />
+          <End Role="Produse" Type="Self.Produse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ambalaj">
+              <PropertyRef Name="IDAmbalaj" />
+            </Principal>
+            <Dependent Role="Produse">
+              <PropertyRef Name="IDAmbalaj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Produse_Persoana">
+          <End Role="Persoana" Type="Self.Persoana" Multiplicity="0..1" />
+          <End Role="Produse" Type="Self.Produse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persoana">
+              <PropertyRef Name="IDPersoana" />
+            </Principal>
+            <Dependent Role="Produse">
+              <PropertyRef Name="IDPersoana" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Receptie_Persoana">
+          <End Role="Persoana" Type="Self.Persoana" Multiplicity="0..1" />
+          <End Role="Receptie" Type="Self.Receptie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persoana">
+              <PropertyRef Name="IDPersoana" />
+            </Principal>
+            <Dependent Role="Receptie">
+              <PropertyRef Name="IDPersoana" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Produse_TipProdus">
+          <End Role="TipProdus" Type="Self.TipProdu" Multiplicity="0..1" />
+          <End Role="Produse" Type="Self.Produse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipProdus">
+              <PropertyRef Name="IDTipProdus" />
+            </Principal>
+            <Dependent Role="Produse">
+              <PropertyRef Name="IDTipProdus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Receptie_Produse">
+          <End Role="Produse" Type="Self.Produse" Multiplicity="0..1" />
+          <End Role="Receptie" Type="Self.Receptie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produse">
+              <PropertyRef Name="IDProdus" />
+            </Principal>
+            <Dependent Role="Receptie">
+              <PropertyRef Name="IDProdus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vanzari_Produse">
+          <End Role="Produse" Type="Self.Produse" Multiplicity="0..1" />
+          <End Role="Vanzari" Type="Self.Vanzari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produse">
+              <PropertyRef Name="IDProdus" />
+            </Principal>
+            <Dependent Role="Vanzari">
+              <PropertyRef Name="IDProdus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Store1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Ambalajs" EntityType="Self.Ambalaj" />
+          <EntitySet Name="Persoanas" EntityType="Self.Persoana" />
+          <EntitySet Name="Produses" EntityType="Self.Produse" />
+          <EntitySet Name="Recepties" EntityType="Self.Receptie" />
+          <EntitySet Name="TipProdus" EntityType="Self.TipProdu" />
+          <EntitySet Name="Vanzaris" EntityType="Self.Vanzari" />
+          <AssociationSet Name="FK_Produse_Ambalaj" Association="Self.FK_Produse_Ambalaj">
+            <End Role="Ambalaj" EntitySet="Ambalajs" />
+            <End Role="Produse" EntitySet="Produses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Produse_Persoana" Association="Self.FK_Produse_Persoana">
+            <End Role="Persoana" EntitySet="Persoanas" />
+            <End Role="Produse" EntitySet="Produses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Receptie_Persoana" Association="Self.FK_Receptie_Persoana">
+            <End Role="Persoana" EntitySet="Persoanas" />
+            <End Role="Receptie" EntitySet="Recepties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Produse_TipProdus" Association="Self.FK_Produse_TipProdus">
+            <End Role="TipProdus" EntitySet="TipProdus" />
+            <End Role="Produse" EntitySet="Produses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Receptie_Produse" Association="Self.FK_Receptie_Produse">
+            <End Role="Produse" EntitySet="Produses" />
+            <End Role="Receptie" EntitySet="Recepties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vanzari_Produse" Association="Self.FK_Vanzari_Produse">
+            <End Role="Produse" EntitySet="Produses" />
+            <End Role="Vanzari" EntitySet="Vanzaris" />
+          </AssociationSet>
+          <FunctionImport Name="actualizarePret" ReturnType="Collection(Int32)">
+            <Parameter Name="IDTipProdus" Mode="In" Type="Int32" />
+            <Parameter Name="PretKg" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CodQR" ReturnType="Collection(String)">
+            <Parameter Name="IDProdus" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="completVerificareVanzari" ReturnType="Collection(Store1Model.completVerificareVanzari_Result)">
+            <Parameter Name="IDVanzari" Mode="InOut" Type="Int32" />
+            <Parameter Name="IDProdus" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="deleteAmbalaj" ReturnType="Collection(Store1Model.deleteAmbalaj_Result)">
+            <Parameter Name="IDAmbalaj" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="deletePersoana" ReturnType="Collection(Store1Model.deletePersoana_Result)">
+            <Parameter Name="IDPersoana" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="deleteProduse" ReturnType="Collection(Store1Model.deleteProduse_Result)">
+            <Parameter Name="IDProdus" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="deleteReceptie" ReturnType="Collection(Store1Model.deleteReceptie_Result)">
+            <Parameter Name="IDReceptie" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="deleteTipProduse" ReturnType="Collection(Store1Model.deleteTipProduse_Result)">
+            <Parameter Name="IDTipProdus" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="deleteVanzari" ReturnType="Collection(Store1Model.deleteVanzari_Result)">
+            <Parameter Name="IDVanzari" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InfoCod" ReturnType="Collection(Store1Model.InfoCod_Result)">
+            <Parameter Name="CodQR" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="insertAmbalaj">
+            <Parameter Name="Denumire" Mode="In" Type="String" />
+            <Parameter Name="IDAmbalaj" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="insertPersoana">
+            <Parameter Name="Nume" Mode="In" Type="String" />
+            <Parameter Name="IDPersoana" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="insertProduse">
+            <Parameter Name="IDProdus" Mode="InOut" Type="Int32" />
+            <Parameter Name="IDAmbalaj" Mode="In" Type="Int32" />
+            <Parameter Name="IDPersoana" Mode="In" Type="Int32" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+            <Parameter Name="IDTipProdus" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="insertReceptie">
+            <Parameter Name="IDReceptie" Mode="InOut" Type="Int32" />
+            <Parameter Name="IDProdus" Mode="In" Type="Int32" />
+            <Parameter Name="IDPersoana" Mode="In" Type="Int32" />
+            <Parameter Name="Observatii" Mode="In" Type="String" />
+            <Parameter Name="Rebut" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="insertTipProduse">
+            <Parameter Name="Nume" Mode="In" Type="String" />
+            <Parameter Name="UnitateMasura" Mode="In" Type="String" />
+            <Parameter Name="PretKg" Mode="In" Type="Int32" />
+            <Parameter Name="Cantitate" Mode="In" Type="Int32" />
+            <Parameter Name="TermenGarantie" Mode="In" Type="Int32" />
+            <Parameter Name="IDTipProdus" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="insertVanzari">
+            <Parameter Name="IDVanzari" Mode="InOut" Type="Int32" />
+            <Parameter Name="IDProdus" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Login_Sel">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="modificareStatusProdus">
+            <Parameter Name="IDProdus" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Project_Del">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Project_Ins">
+            <Parameter Name="ID" Mode="InOut" Type="Int32" />
+            <Parameter Name="Echipament" Mode="In" Type="String" />
+            <Parameter Name="Projects" Mode="In" Type="String" />
+            <Parameter Name="PartNOPainting" Mode="In" Type="String" />
+            <Parameter Name="PartNOEngraving" Mode="In" Type="String" />
+            <Parameter Name="PartNOEOL" Mode="In" Type="String" />
+            <Parameter Name="Cycletimesec1pcs" Mode="In" Type="Double" />
+            <Parameter Name="Cycletimemin100pcs" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="Project_Sel" />
+          <FunctionImport Name="Project_Upd">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="Echipament" Mode="In" Type="String" />
+            <Parameter Name="Projects" Mode="In" Type="String" />
+            <Parameter Name="PartNOPainting" Mode="In" Type="String" />
+            <Parameter Name="PartNOEngraving" Mode="In" Type="String" />
+            <Parameter Name="PartNOEOL" Mode="In" Type="String" />
+            <Parameter Name="Cycletimesec1pcs" Mode="In" Type="Double" />
+            <Parameter Name="Cycletimemin100pcs" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="selectAmbalaj" ReturnType="Collection(Store1Model.selectAmbalaj_Result)" />
+          <FunctionImport Name="selectPersoana" ReturnType="Collection(Store1Model.selectPersoana_Result)" />
+          <FunctionImport Name="selectProdus" ReturnType="Collection(Store1Model.selectProdus_Result)" />
+          <FunctionImport Name="selectReceptie" ReturnType="Collection(Store1Model.selectReceptie_Result)" />
+          <FunctionImport Name="selectTipProduse" ReturnType="Collection(Store1Model.selectTipProduse_Result)" />
+          <FunctionImport Name="selectVanzari" ReturnType="Collection(Store1Model.selectVanzari_Result)" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Store1Model.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Store1Model.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="updateAmbalaj">
+            <Parameter Name="Denumire" Mode="In" Type="String" />
+            <Parameter Name="IDAmbalaj" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="updatePersoana">
+            <Parameter Name="Nume" Mode="In" Type="String" />
+            <Parameter Name="IDPersoana" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="updateProduse">
+            <Parameter Name="IDProdus" Mode="In" Type="Int32" />
+            <Parameter Name="IDAmbalaj" Mode="In" Type="Int32" />
+            <Parameter Name="DataAmbalare" Mode="In" Type="DateTime" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+            <Parameter Name="IDTipProdus" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="updateReceptie">
+            <Parameter Name="IDReceptie" Mode="In" Type="Int32" />
+            <Parameter Name="IDProdus" Mode="In" Type="Int32" />
+            <Parameter Name="IDPersoana" Mode="In" Type="Int32" />
+            <Parameter Name="DataReceptie" Mode="In" Type="DateTime" />
+            <Parameter Name="Observatii" Mode="In" Type="String" />
+            <Parameter Name="Rebut" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="updateTipProduse">
+            <Parameter Name="Nume" Mode="In" Type="String" />
+            <Parameter Name="UnitateMasura" Mode="In" Type="String" />
+            <Parameter Name="PretKg" Mode="In" Type="Int32" />
+            <Parameter Name="Cantitate" Mode="In" Type="Int32" />
+            <Parameter Name="TermenGarantie" Mode="In" Type="Int32" />
+            <Parameter Name="IDTipProdus" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="updateVanzari">
+            <Parameter Name="IDVanzari" Mode="In" Type="Int32" />
+            <Parameter Name="IDProdus" Mode="In" Type="Int32" />
+            <Parameter Name="DataVanzare" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="VAR1VerificareValabilitate" ReturnType="Collection(Store1Model.VAR1VerificareValabilitate_Result)">
+            <Parameter Name="IDProdus" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="VAR1VerificareVanzari" ReturnType="Collection(Store1Model.VAR1VerificareVanzari_Result)">
+            <Parameter Name="IDVanzari" Mode="InOut" Type="Int32" />
+            <Parameter Name="IDProdus" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="verificareLaReceptie" ReturnType="Collection(Store1Model.verificareLaReceptie_Result)">
+            <Parameter Name="IDReceptie" Mode="InOut" Type="Int32" />
+            <Parameter Name="IDProdus" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="verificareStoc" ReturnType="Collection(Store1Model.verificareStoc_Result)">
+            <Parameter Name="Nume" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="completVerificareVanzari_Result">
+          <Property Type="Int32" Name="TermenGarantie" Nullable="false" />
+          <Property Type="DateTime" Name="DataRecetie" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="deleteAmbalaj_Result">
+          <Property Type="Int32" Name="IDAmbalaj" Nullable="true" />
+          <Property Type="String" Name="Denumire" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="deletePersoana_Result">
+          <Property Type="Int32" Name="IDPersoana" Nullable="true" />
+          <Property Type="String" Name="Nume" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="deleteProduse_Result">
+          <Property Type="Int32" Name="IDProdus" Nullable="true" />
+          <Property Type="Int32" Name="IDAmbalaj" Nullable="true" />
+          <Property Type="Int32" Name="IDPersoana" Nullable="true" />
+          <Property Type="DateTime" Name="DataAmbalare" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="IDTipProdus" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="deleteReceptie_Result">
+          <Property Type="Int32" Name="IDReceptie" Nullable="true" />
+          <Property Type="Int32" Name="IDProdus" Nullable="true" />
+          <Property Type="Int32" Name="IDPersoana" Nullable="true" />
+          <Property Type="DateTime" Name="DataReceptie" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Observatii" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="Rebut" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="deleteTipProduse_Result">
+          <Property Type="Int32" Name="IDTipProdus" Nullable="true" />
+          <Property Type="String" Name="Nume" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="UnitateMasura" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="PretKg" Nullable="true" />
+          <Property Type="Int32" Name="Cantitate" Nullable="true" />
+          <Property Type="Int32" Name="TermenGarantie" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="deleteVanzari_Result">
+          <Property Type="Int32" Name="IDVanzari" Nullable="true" />
+          <Property Type="Int32" Name="IDProdus" Nullable="true" />
+          <Property Type="DateTime" Name="DataVanzare" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="InfoCod_Result">
+          <Property Type="Int32" Name="IDProdus" Nullable="false" />
+          <Property Type="String" Name="NumeTipProdus" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DataExpirare" Nullable="true" MaxLength="8" />
+        </ComplexType>
+        <ComplexType Name="selectAmbalaj_Result">
+          <Property Type="Int32" Name="IDAmbalaj" Nullable="false" />
+          <Property Type="String" Name="Denumire" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="selectPersoana_Result">
+          <Property Type="Int32" Name="IDPersoana" Nullable="false" />
+          <Property Type="String" Name="Nume" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="selectProdus_Result">
+          <Property Type="Int32" Name="IDProdus" Nullable="false" />
+          <Property Type="String" Name="TipProdus" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="PretKg" Nullable="false" />
+          <Property Type="DateTime" Name="DataAmbalare" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Ambalaj" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Persoana" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="selectReceptie_Result">
+          <Property Type="Int32" Name="IDReceptie" Nullable="false" />
+          <Property Type="Int32" Name="IDProdus" Nullable="true" />
+          <Property Type="Int32" Name="IDPersoana" Nullable="true" />
+          <Property Type="String" Name="Nume" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="DataRecetie" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Observatii" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="Rebut" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="selectTipProduse_Result">
+          <Property Type="Int32" Name="IDTipProdus" Nullable="false" />
+          <Property Type="String" Name="Nume" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UnitateMasura" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="PretKg" Nullable="false" />
+          <Property Type="Int32" Name="Cantitate" Nullable="false" />
+          <Property Type="Int32" Name="TermenGarantie" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="selectVanzari_Result">
+          <Property Type="Int32" Name="IDVanzari" Nullable="false" />
+          <Property Type="Int32" Name="IDProdus" Nullable="true" />
+          <Property Type="Int32" Name="IDTipProdus" Nullable="true" />
+          <Property Type="String" Name="Nume" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="DataVanzare" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="VAR1VerificareValabilitate_Result">
+          <Property Type="Int32" Name="IDVanzari" Nullable="false" />
+          <Property Type="DateTime" Name="DataAmbalare" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="TermenGarantie" Nullable="false" />
+          <Property Type="String" Name="statusProdusVandut" Nullable="false" MaxLength="7" />
+        </ComplexType>
+        <ComplexType Name="VAR1VerificareVanzari_Result">
+          <Property Type="Int32" Name="IDVanzari" Nullable="false" />
+          <Property Type="DateTime" Name="DataRecetie" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="DataVanzare" Nullable="true" Precision="23" />
+          <Property Type="String" Name="statusProdus" Nullable="false" MaxLength="17" />
+        </ComplexType>
+        <ComplexType Name="verificareLaReceptie_Result">
+          <Property Type="Int32" Name="TermenGarantie" Nullable="false" />
+          <Property Type="DateTime" Name="DataRecetie" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="verificareStoc_Result">
+          <Property Type="Int32" Name="IDProdus" Nullable="false" />
+          <Property Type="String" Name="Nume" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Store1ModelStoreContainer" CdmEntityContainer="Store1Entities">
+          <EntitySetMapping Name="Ambalajs">
+            <EntityTypeMapping TypeName="Store1Model.Ambalaj">
+              <MappingFragment StoreEntitySet="Ambalaj">
+                <ScalarProperty Name="IDAmbalaj" ColumnName="IDAmbalaj" />
+                <ScalarProperty Name="Denumire" ColumnName="Denumire" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Persoanas">
+            <EntityTypeMapping TypeName="Store1Model.Persoana">
+              <MappingFragment StoreEntitySet="Persoana">
+                <ScalarProperty Name="IDPersoana" ColumnName="IDPersoana" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Produses">
+            <EntityTypeMapping TypeName="Store1Model.Produse">
+              <MappingFragment StoreEntitySet="Produse">
+                <ScalarProperty Name="IDProdus" ColumnName="IDProdus" />
+                <ScalarProperty Name="IDAmbalaj" ColumnName="IDAmbalaj" />
+                <ScalarProperty Name="IDPersoana" ColumnName="IDPersoana" />
+                <ScalarProperty Name="IDTipProdus" ColumnName="IDTipProdus" />
+                <ScalarProperty Name="DataAmbalare" ColumnName="DataAmbalare" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recepties">
+            <EntityTypeMapping TypeName="Store1Model.Receptie">
+              <MappingFragment StoreEntitySet="Receptie">
+                <ScalarProperty Name="IDReceptie" ColumnName="IDReceptie" />
+                <ScalarProperty Name="IDProdus" ColumnName="IDProdus" />
+                <ScalarProperty Name="IDPersoana" ColumnName="IDPersoana" />
+                <ScalarProperty Name="DataRecetie" ColumnName="DataRecetie" />
+                <ScalarProperty Name="Observatii" ColumnName="Observatii" />
+                <ScalarProperty Name="Rebut" ColumnName="Rebut" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipProdus">
+            <EntityTypeMapping TypeName="Store1Model.TipProdu">
+              <MappingFragment StoreEntitySet="TipProdus">
+                <ScalarProperty Name="IDTipProdus" ColumnName="IDTipProdus" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="UnitateMasura" ColumnName="UnitateMasura" />
+                <ScalarProperty Name="PretKg" ColumnName="PretKg" />
+                <ScalarProperty Name="Cantitate" ColumnName="Cantitate" />
+                <ScalarProperty Name="TermenGarantie" ColumnName="TermenGarantie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vanzaris">
+            <EntityTypeMapping TypeName="Store1Model.Vanzari">
+              <MappingFragment StoreEntitySet="Vanzari">
+                <ScalarProperty Name="IDVanzari" ColumnName="IDVanzari" />
+                <ScalarProperty Name="IDProdus" ColumnName="IDProdus" />
+                <ScalarProperty Name="DataVanzare" ColumnName="DataVanzare" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="actualizarePret" FunctionName="Store1Model.Store.actualizarePret" />
+          <FunctionImportMapping FunctionImportName="CodQR" FunctionName="Store1Model.Store.CodQR" />
+          <FunctionImportMapping FunctionImportName="completVerificareVanzari" FunctionName="Store1Model.Store.completVerificareVanzari">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Store1Model.completVerificareVanzari_Result">
+                <ScalarProperty Name="TermenGarantie" ColumnName="TermenGarantie" />
+                <ScalarProperty Name="DataRecetie" ColumnName="DataRecetie" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="deleteAmbalaj" FunctionName="Store1Model.Store.deleteAmbalaj">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Store1Model.deleteAmbalaj_Result">
+                <ScalarProperty Name="IDAmbalaj" ColumnName="IDAmbalaj" />
+                <ScalarProperty Name="Denumire" ColumnName="Denumire" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="deletePersoana" FunctionName="Store1Model.Store.deletePersoana">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Store1Model.deletePersoana_Result">
+                <ScalarProperty Name="IDPersoana" ColumnName="IDPersoana" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="deleteProduse" FunctionName="Store1Model.Store.deleteProduse">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Store1Model.deleteProduse_Result">
+                <ScalarProperty Name="IDProdus" ColumnName="IDProdus" />
+                <ScalarProperty Name="IDAmbalaj" ColumnName="IDAmbalaj" />
+                <ScalarProperty Name="IDPersoana" ColumnName="IDPersoana" />
+                <ScalarProperty Name="DataAmbalare" ColumnName="DataAmbalare" />
+                <ScalarProperty Name="IDTipProdus" ColumnName="IDTipProdus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="deleteReceptie" FunctionName="Store1Model.Store.deleteReceptie">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Store1Model.deleteReceptie_Result">
+                <ScalarProperty Name="IDReceptie" ColumnName="IDReceptie" />
+                <ScalarProperty Name="IDProdus" ColumnName="IDProdus" />
+                <ScalarProperty Name="IDPersoana" ColumnName="IDPersoana" />
+                <ScalarProperty Name="DataReceptie" ColumnName="DataReceptie" />
+                <ScalarProperty Name="Observatii" ColumnName="Observatii" />
+                <ScalarProperty Name="Rebut" ColumnName="Rebut" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="deleteTipProduse" FunctionName="Store1Model.Store.deleteTipProduse">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Store1Model.deleteTipProduse_Result">
+                <ScalarProperty Name="IDTipProdus" ColumnName="IDTipProdus" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="UnitateMasura" ColumnName="UnitateMasura" />
+                <ScalarProperty Name="PretKg" ColumnName="PretKg" />
+                <ScalarProperty Name="Cantitate" ColumnName="Cantitate" />
+                <ScalarProperty Name="TermenGarantie" ColumnName="TermenGarantie" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="deleteVanzari" FunctionName="Store1Model.Store.deleteVanzari">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Store1Model.deleteVanzari_Result">
+                <ScalarProperty Name="IDVanzari" ColumnName="IDVanzari" />
+                <ScalarProperty Name="IDProdus" ColumnName="IDProdus" />
+                <ScalarProperty Name="DataVanzare" ColumnName="DataVanzare" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InfoCod" FunctionName="Store1Model.Store.InfoCod">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Store1Model.InfoCod_Result">
+                <ScalarProperty Name="IDProdus" ColumnName="IDProdus" />
+                <ScalarProperty Name="NumeTipProdus" ColumnName="NumeTipProdus" />
+                <ScalarProperty Name="DataExpirare" ColumnName="DataExpirare" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="insertAmbalaj" FunctionName="Store1Model.Store.insertAmbalaj" />
+          <FunctionImportMapping FunctionImportName="insertPersoana" FunctionName="Store1Model.Store.insertPersoana" />
+          <FunctionImportMapping FunctionImportName="insertProduse" FunctionName="Store1Model.Store.insertProduse" />
+          <FunctionImportMapping FunctionImportName="insertReceptie" FunctionName="Store1Model.Store.insertReceptie" />
+          <FunctionImportMapping FunctionImportName="insertTipProduse" FunctionName="Store1Model.Store.insertTipProduse" />
+          <FunctionImportMapping FunctionImportName="insertVanzari" FunctionName="Store1Model.Store.insertVanzari" />
+          <FunctionImportMapping FunctionImportName="Login_Sel" FunctionName="Store1Model.Store.Login_Sel" />
+          <FunctionImportMapping FunctionImportName="modificareStatusProdus" FunctionName="Store1Model.Store.modificareStatusProdus" />
+          <FunctionImportMapping FunctionImportName="Project_Del" FunctionName="Store1Model.Store.Project_Del" />
+          <FunctionImportMapping FunctionImportName="Project_Ins" FunctionName="Store1Model.Store.Project_Ins" />
+          <FunctionImportMapping FunctionImportName="Project_Sel" FunctionName="Store1Model.Store.Project_Sel" />
+          <FunctionImportMapping FunctionImportName="Project_Upd" FunctionName="Store1Model.Store.Project_Upd" />
+          <FunctionImportMapping FunctionImportName="selectAmbalaj" FunctionName="Store1Model.Store.selectAmbalaj">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Store1Model.selectAmbalaj_Result">
+                <ScalarProperty Name="IDAmbalaj" ColumnName="IDAmbalaj" />
+                <ScalarProperty Name="Denumire" ColumnName="Denumire" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selectPersoana" FunctionName="Store1Model.Store.selectPersoana">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Store1Model.selectPersoana_Result">
+                <ScalarProperty Name="IDPersoana" ColumnName="IDPersoana" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selectProdus" FunctionName="Store1Model.Store.selectProdus">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Store1Model.selectProdus_Result">
+                <ScalarProperty Name="IDProdus" ColumnName="IDProdus" />
+                <ScalarProperty Name="TipProdus" ColumnName="TipProdus" />
+                <ScalarProperty Name="PretKg" ColumnName="PretKg" />
+                <ScalarProperty Name="DataAmbalare" ColumnName="DataAmbalare" />
+                <ScalarProperty Name="Ambalaj" ColumnName="Ambalaj" />
+                <ScalarProperty Name="Persoana" ColumnName="Persoana" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selectReceptie" FunctionName="Store1Model.Store.selectReceptie">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Store1Model.selectReceptie_Result">
+                <ScalarProperty Name="IDReceptie" ColumnName="IDReceptie" />
+                <ScalarProperty Name="IDProdus" ColumnName="IDProdus" />
+                <ScalarProperty Name="IDPersoana" ColumnName="IDPersoana" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="DataRecetie" ColumnName="DataRecetie" />
+                <ScalarProperty Name="Observatii" ColumnName="Observatii" />
+                <ScalarProperty Name="Rebut" ColumnName="Rebut" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selectTipProduse" FunctionName="Store1Model.Store.selectTipProduse">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Store1Model.selectTipProduse_Result">
+                <ScalarProperty Name="IDTipProdus" ColumnName="IDTipProdus" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="UnitateMasura" ColumnName="UnitateMasura" />
+                <ScalarProperty Name="PretKg" ColumnName="PretKg" />
+                <ScalarProperty Name="Cantitate" ColumnName="Cantitate" />
+                <ScalarProperty Name="TermenGarantie" ColumnName="TermenGarantie" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selectVanzari" FunctionName="Store1Model.Store.selectVanzari">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Store1Model.selectVanzari_Result">
+                <ScalarProperty Name="IDVanzari" ColumnName="IDVanzari" />
+                <ScalarProperty Name="IDProdus" ColumnName="IDProdus" />
+                <ScalarProperty Name="IDTipProdus" ColumnName="IDTipProdus" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="DataVanzare" ColumnName="DataVanzare" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Store1Model.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Store1Model.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Store1Model.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Store1Model.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Store1Model.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Store1Model.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Store1Model.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Store1Model.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Store1Model.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="updateAmbalaj" FunctionName="Store1Model.Store.updateAmbalaj" />
+          <FunctionImportMapping FunctionImportName="updatePersoana" FunctionName="Store1Model.Store.updatePersoana" />
+          <FunctionImportMapping FunctionImportName="updateProduse" FunctionName="Store1Model.Store.updateProduse" />
+          <FunctionImportMapping FunctionImportName="updateReceptie" FunctionName="Store1Model.Store.updateReceptie" />
+          <FunctionImportMapping FunctionImportName="updateTipProduse" FunctionName="Store1Model.Store.updateTipProduse" />
+          <FunctionImportMapping FunctionImportName="updateVanzari" FunctionName="Store1Model.Store.updateVanzari" />
+          <FunctionImportMapping FunctionImportName="VAR1VerificareValabilitate" FunctionName="Store1Model.Store.VAR1VerificareValabilitate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Store1Model.VAR1VerificareValabilitate_Result">
+                <ScalarProperty Name="IDVanzari" ColumnName="IDVanzari" />
+                <ScalarProperty Name="DataAmbalare" ColumnName="DataAmbalare" />
+                <ScalarProperty Name="TermenGarantie" ColumnName="TermenGarantie" />
+                <ScalarProperty Name="statusProdusVandut" ColumnName="statusProdusVandut" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="VAR1VerificareVanzari" FunctionName="Store1Model.Store.VAR1VerificareVanzari">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Store1Model.VAR1VerificareVanzari_Result">
+                <ScalarProperty Name="IDVanzari" ColumnName="IDVanzari" />
+                <ScalarProperty Name="DataRecetie" ColumnName="DataRecetie" />
+                <ScalarProperty Name="DataVanzare" ColumnName="DataVanzare" />
+                <ScalarProperty Name="statusProdus" ColumnName="statusProdus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="verificareLaReceptie" FunctionName="Store1Model.Store.verificareLaReceptie">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Store1Model.verificareLaReceptie_Result">
+                <ScalarProperty Name="TermenGarantie" ColumnName="TermenGarantie" />
+                <ScalarProperty Name="DataRecetie" ColumnName="DataRecetie" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="verificareStoc" FunctionName="Store1Model.Store.verificareStoc">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Store1Model.verificareStoc_Result">
+                <ScalarProperty Name="IDProdus" ColumnName="IDProdus" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

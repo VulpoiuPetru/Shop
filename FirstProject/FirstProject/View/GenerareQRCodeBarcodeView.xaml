@@ -1,0 +1,22 @@
+﻿<Window x:Class="FirstProject.View.GenerareQRCodeBarcodeView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FirstProject.View"
+        mc:Ignorable="d"
+        Title="GenerareQRCodeBarcodeView" Height="450" Width="800">
+    <Grid>
+        <Image x:Name="ImagineQRCode" HorizontalAlignment="Left" Margin="437,42,0,0" VerticalAlignment="Top" Width="222" Height="222"/>
+        <TextBox x:Name="ProdusSelect" HorizontalAlignment="Left" Margin="134,32,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Height="26" KeyDown="ProdusSelect_KeyDown"/>
+        <Label Content="Produs:" HorizontalAlignment="Left" Margin="59,32,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="CodGenerat" HorizontalAlignment="Left" Margin="134,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138" Height="22"/>
+        <Label Content="Cod generat:" HorizontalAlignment="Left" Margin="46,147,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ButonQRCode" Content="QRCode" HorizontalAlignment="Left" Margin="108,217,0,0" VerticalAlignment="Top" Height="25" Width="64" Click="ButonQRCode_Click"/>
+        <Button x:Name="ButonBarCode" Content="Barcode" HorizontalAlignment="Left" Margin="203,217,0,0" VerticalAlignment="Top" Height="25" Width="87" Click="ButonBarCode_Click"/>
+        <Button x:Name="ButonPrint" Content="Print Bluetooth" HorizontalAlignment="Left" Margin="108,334,0,0" VerticalAlignment="Top" Height="42" Width="117" Click="ButonPrint_Click"/>
+        <Button x:Name="ButtonPrintCabQR" Content="Print Cab QR" HorizontalAlignment="Left" Margin="178,270,0,0" VerticalAlignment="Top" Height="39" Width="94" Click="ButonPrintCabQR_Click"/>
+        <Button x:Name="ButtonPrintCabBarcCpde" Content="Print Cab Barcode" HorizontalAlignment="Left" Margin="26,270,0,0" VerticalAlignment="Top" Height="38" Width="120" Click="ButonPrintCabBarcode_Click"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,18 @@
+﻿<Window x:Class="FirstProject.View.VanzareView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FirstProject.View"
+        mc:Ignorable="d"
+        Title="VanzareView" Height="450" Width="800">
+    <Grid>
+        <Label Content="Vanzare Produse" HorizontalAlignment="Left" Margin="242,75,0,0" VerticalAlignment="Top" Height="57" Width="233" FontSize="24"/>
+        <Label Content="Selecatre produs:" HorizontalAlignment="Left" Margin="74,148,0,0" VerticalAlignment="Top" Height="28" Width="110"/>
+        <Calendar x:Name="DataVanzare" HorizontalAlignment="Left" Margin="242,174,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ButonConfirmare" Content="Confirmare" HorizontalAlignment="Left" Margin="526,195,0,0" VerticalAlignment="Top" Height="22" Width="69" Click="ButonConfirmare_Click"/>
+        <TextBox x:Name="ProdusSelect" HorizontalAlignment="Left" Margin="69,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Height="25" KeyDown="ProdusSelect_KeyDown"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="526,287,0,0" VerticalAlignment="Top" Click="Buton_Click"/>
+
+    </Grid>
+</Window>

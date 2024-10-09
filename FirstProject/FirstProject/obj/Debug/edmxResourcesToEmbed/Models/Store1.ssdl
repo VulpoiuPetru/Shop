@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Store1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Ambalaj">
+    <Key>
+      <PropertyRef Name="IDAmbalaj" />
+    </Key>
+    <Property Name="IDAmbalaj" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Denumire" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Persoana">
+    <Key>
+      <PropertyRef Name="IDPersoana" />
+    </Key>
+    <Property Name="IDPersoana" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nume" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Produse">
+    <Key>
+      <PropertyRef Name="IDProdus" />
+    </Key>
+    <Property Name="IDProdus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDAmbalaj" Type="int" />
+    <Property Name="IDPersoana" Type="int" />
+    <Property Name="IDTipProdus" Type="int" />
+    <Property Name="DataAmbalare" Type="datetime" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Receptie">
+    <Key>
+      <PropertyRef Name="IDReceptie" />
+    </Key>
+    <Property Name="IDReceptie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDProdus" Type="int" />
+    <Property Name="IDPersoana" Type="int" />
+    <Property Name="DataRecetie" Type="datetime" />
+    <Property Name="Observatii" Type="nvarchar" MaxLength="50" />
+    <Property Name="Rebut" Type="bit" />
+  </EntityType>
+  <EntityType Name="TipProdus">
+    <Key>
+      <PropertyRef Name="IDTipProdus" />
+    </Key>
+    <Property Name="IDTipProdus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nume" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UnitateMasura" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PretKg" Type="int" Nullable="false" />
+    <Property Name="Cantitate" Type="int" Nullable="false" />
+    <Property Name="TermenGarantie" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vanzari">
+    <Key>
+      <PropertyRef Name="IDVanzari" />
+    </Key>
+    <Property Name="IDVanzari" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDProdus" Type="int" />
+    <Property Name="DataVanzare" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_Produse_Ambalaj">
+    <End Role="Ambalaj" Type="Self.Ambalaj" Multiplicity="0..1" />
+    <End Role="Produse" Type="Self.Produse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ambalaj">
+        <PropertyRef Name="IDAmbalaj" />
+      </Principal>
+      <Dependent Role="Produse">
+        <PropertyRef Name="IDAmbalaj" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Produse_Persoana">
+    <End Role="Persoana" Type="Self.Persoana" Multiplicity="0..1" />
+    <End Role="Produse" Type="Self.Produse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persoana">
+        <PropertyRef Name="IDPersoana" />
+      </Principal>
+      <Dependent Role="Produse">
+        <PropertyRef Name="IDPersoana" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Produse_TipProdus">
+    <End Role="TipProdus" Type="Self.TipProdus" Multiplicity="0..1" />
+    <End Role="Produse" Type="Self.Produse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipProdus">
+        <PropertyRef Name="IDTipProdus" />
+      </Principal>
+      <Dependent Role="Produse">
+        <PropertyRef Name="IDTipProdus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Receptie_Persoana">
+    <End Role="Persoana" Type="Self.Persoana" Multiplicity="0..1" />
+    <End Role="Receptie" Type="Self.Receptie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persoana">
+        <PropertyRef Name="IDPersoana" />
+      </Principal>
+      <Dependent Role="Receptie">
+        <PropertyRef Name="IDPersoana" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Receptie_Produse">
+    <End Role="Produse" Type="Self.Produse" Multiplicity="0..1" />
+    <End Role="Receptie" Type="Self.Receptie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produse">
+        <PropertyRef Name="IDProdus" />
+      </Principal>
+      <Dependent Role="Receptie">
+        <PropertyRef Name="IDProdus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vanzari_Produse">
+    <End Role="Produse" Type="Self.Produse" Multiplicity="0..1" />
+    <End Role="Vanzari" Type="Self.Vanzari" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produse">
+        <PropertyRef Name="IDProdus" />
+      </Principal>
+      <Dependent Role="Vanzari">
+        <PropertyRef Name="IDProdus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="actualizarePret" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDTipProdus" Type="int" Mode="In" />
+    <Parameter Name="PretKg" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CodQR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDProdus" Type="int" Mode="In" />
+  </Function>
+  <Function Name="completVerificareVanzari" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDVanzari" Type="int" Mode="InOut" />
+    <Parameter Name="IDProdus" Type="int" Mode="In" />
+  </Function>
+  <Function Name="deleteAmbalaj" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDAmbalaj" Type="int" Mode="In" />
+  </Function>
+  <Function Name="deletePersoana" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDPersoana" Type="int" Mode="In" />
+  </Function>
+  <Function Name="deleteProduse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDProdus" Type="int" Mode="In" />
+  </Function>
+  <Function Name="deleteReceptie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDReceptie" Type="int" Mode="In" />
+  </Function>
+  <Function Name="deleteTipProduse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDTipProdus" Type="int" Mode="In" />
+  </Function>
+  <Function Name="deleteVanzari" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDVanzari" Type="int" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="InfoCod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CodQR" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="insertAmbalaj" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Denumire" Type="varchar" Mode="In" />
+    <Parameter Name="IDAmbalaj" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="insertPersoana" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nume" Type="varchar" Mode="In" />
+    <Parameter Name="IDPersoana" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="insertProduse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDProdus" Type="int" Mode="InOut" />
+    <Parameter Name="IDAmbalaj" Type="int" Mode="In" />
+    <Parameter Name="IDPersoana" Type="int" Mode="In" />
+    <Parameter Name="Status" Type="varchar" Mode="In" />
+    <Parameter Name="IDTipProdus" Type="int" Mode="In" />
+  </Function>
+  <Function Name="insertReceptie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDReceptie" Type="int" Mode="InOut" />
+    <Parameter Name="IDProdus" Type="int" Mode="In" />
+    <Parameter Name="IDPersoana" Type="int" Mode="In" />
+    <Parameter Name="Observatii" Type="varchar" Mode="In" />
+    <Parameter Name="Rebut" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="insertTipProduse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nume" Type="varchar" Mode="In" />
+    <Parameter Name="UnitateMasura" Type="nvarchar" Mode="In" />
+    <Parameter Name="PretKg" Type="int" Mode="In" />
+    <Parameter Name="Cantitate" Type="int" Mode="In" />
+    <Parameter Name="TermenGarantie" Type="int" Mode="In" />
+    <Parameter Name="IDTipProdus" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="insertVanzari" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDVanzari" Type="int" Mode="InOut" />
+    <Parameter Name="IDProdus" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Login_Sel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="modificareStatusProdus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDProdus" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Project_Del" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Project_Ins" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="InOut" />
+    <Parameter Name="Echipament" Type="nvarchar" Mode="In" />
+    <Parameter Name="Projects" Type="nvarchar" Mode="In" />
+    <Parameter Name="PartNOPainting" Type="nvarchar" Mode="In" />
+    <Parameter Name="PartNOEngraving" Type="nvarchar" Mode="In" />
+    <Parameter Name="PartNOEOL" Type="nvarchar" Mode="In" />
+    <Parameter Name="Cycletimesec1pcs" Type="float" Mode="In" />
+    <Parameter Name="Cycletimemin100pcs" Type="float" Mode="In" />
+  </Function>
+  <Function Name="Project_Sel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Project_Upd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="Echipament" Type="nvarchar" Mode="In" />
+    <Parameter Name="Projects" Type="nvarchar" Mode="In" />
+    <Parameter Name="PartNOPainting" Type="nvarchar" Mode="In" />
+    <Parameter Name="PartNOEngraving" Type="nvarchar" Mode="In" />
+    <Parameter Name="PartNOEOL" Type="nvarchar" Mode="In" />
+    <Parameter Name="Cycletimesec1pcs" Type="float" Mode="In" />
+    <Parameter Name="Cycletimemin100pcs" Type="float" Mode="In" />
+  </Function>
+  <Function Name="selectAmbalaj" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="selectPersoana" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="selectProdus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="selectReceptie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="selectTipProduse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="selectVanzari" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="updateAmbalaj" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Denumire" Type="varchar" Mode="In" />
+    <Parameter Name="IDAmbalaj" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updatePersoana" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nume" Type="varchar" Mode="In" />
+    <Parameter Name="IDPersoana" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updateProduse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDProdus" Type="int" Mode="In" />
+    <Parameter Name="IDAmbalaj" Type="int" Mode="In" />
+    <Parameter Name="DataAmbalare" Type="datetime" Mode="In" />
+    <Parameter Name="Status" Type="varchar" Mode="In" />
+    <Parameter Name="IDTipProdus" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updateReceptie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDReceptie" Type="int" Mode="In" />
+    <Parameter Name="IDProdus" Type="int" Mode="In" />
+    <Parameter Name="IDPersoana" Type="int" Mode="In" />
+    <Parameter Name="DataReceptie" Type="datetime" Mode="In" />
+    <Parameter Name="Observatii" Type="varchar" Mode="In" />
+    <Parameter Name="Rebut" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="updateTipProduse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nume" Type="varchar" Mode="In" />
+    <Parameter Name="UnitateMasura" Type="nvarchar" Mode="In" />
+    <Parameter Name="PretKg" Type="int" Mode="In" />
+    <Parameter Name="Cantitate" Type="int" Mode="In" />
+    <Parameter Name="TermenGarantie" Type="int" Mode="In" />
+    <Parameter Name="IDTipProdus" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updateVanzari" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDVanzari" Type="int" Mode="In" />
+    <Parameter Name="IDProdus" Type="int" Mode="In" />
+    <Parameter Name="DataVanzare" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="VAR1VerificareValabilitate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDProdus" Type="int" Mode="In" />
+  </Function>
+  <Function Name="VAR1VerificareVanzari" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDVanzari" Type="int" Mode="InOut" />
+    <Parameter Name="IDProdus" Type="int" Mode="In" />
+  </Function>
+  <Function Name="verificareLaReceptie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDReceptie" Type="int" Mode="InOut" />
+    <Parameter Name="IDProdus" Type="int" Mode="In" />
+  </Function>
+  <Function Name="verificareStoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nume" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="Store1ModelStoreContainer">
+    <EntitySet Name="Ambalaj" EntityType="Self.Ambalaj" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Persoana" EntityType="Self.Persoana" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Produse" EntityType="Self.Produse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Receptie" EntityType="Self.Receptie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipProdus" EntityType="Self.TipProdus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vanzari" EntityType="Self.Vanzari" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Produse_Ambalaj" Association="Self.FK_Produse_Ambalaj">
+      <End Role="Ambalaj" EntitySet="Ambalaj" />
+      <End Role="Produse" EntitySet="Produse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Produse_Persoana" Association="Self.FK_Produse_Persoana">
+      <End Role="Persoana" EntitySet="Persoana" />
+      <End Role="Produse" EntitySet="Produse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Produse_TipProdus" Association="Self.FK_Produse_TipProdus">
+      <End Role="TipProdus" EntitySet="TipProdus" />
+      <End Role="Produse" EntitySet="Produse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Receptie_Persoana" Association="Self.FK_Receptie_Persoana">
+      <End Role="Persoana" EntitySet="Persoana" />
+      <End Role="Receptie" EntitySet="Receptie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Receptie_Produse" Association="Self.FK_Receptie_Produse">
+      <End Role="Produse" EntitySet="Produse" />
+      <End Role="Receptie" EntitySet="Receptie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vanzari_Produse" Association="Self.FK_Vanzari_Produse">
+      <End Role="Produse" EntitySet="Produse" />
+      <End Role="Vanzari" EntitySet="Vanzari" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

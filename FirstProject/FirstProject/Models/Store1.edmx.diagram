@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6db846dc41324025a6104a70d14ba922" Name="Diagram1">
+        <EntityTypeShape EntityType="Store1Model.Ambalaj" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Store1Model.Persoana" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Store1Model.Produse" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Store1Model.Receptie" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Store1Model.TipProdu" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Store1Model.Vanzari" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
+        <AssociationConnector Association="Store1Model.FK_Produse_Ambalaj" ManuallyRouted="false" />
+        <AssociationConnector Association="Store1Model.FK_Produse_Persoana" ManuallyRouted="false" />
+        <AssociationConnector Association="Store1Model.FK_Receptie_Persoana" ManuallyRouted="false" />
+        <AssociationConnector Association="Store1Model.FK_Produse_TipProdus" ManuallyRouted="false" />
+        <AssociationConnector Association="Store1Model.FK_Receptie_Produse" ManuallyRouted="false" />
+        <AssociationConnector Association="Store1Model.FK_Vanzari_Produse" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

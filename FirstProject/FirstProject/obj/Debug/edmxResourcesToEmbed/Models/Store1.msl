@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Store1ModelStoreContainer" CdmEntityContainer="Store1Entities">
+    <EntitySetMapping Name="Ambalajs">
+      <EntityTypeMapping TypeName="Store1Model.Ambalaj">
+        <MappingFragment StoreEntitySet="Ambalaj">
+          <ScalarProperty Name="IDAmbalaj" ColumnName="IDAmbalaj" />
+          <ScalarProperty Name="Denumire" ColumnName="Denumire" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Persoanas">
+      <EntityTypeMapping TypeName="Store1Model.Persoana">
+        <MappingFragment StoreEntitySet="Persoana">
+          <ScalarProperty Name="IDPersoana" ColumnName="IDPersoana" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Produses">
+      <EntityTypeMapping TypeName="Store1Model.Produse">
+        <MappingFragment StoreEntitySet="Produse">
+          <ScalarProperty Name="IDProdus" ColumnName="IDProdus" />
+          <ScalarProperty Name="IDAmbalaj" ColumnName="IDAmbalaj" />
+          <ScalarProperty Name="IDPersoana" ColumnName="IDPersoana" />
+          <ScalarProperty Name="IDTipProdus" ColumnName="IDTipProdus" />
+          <ScalarProperty Name="DataAmbalare" ColumnName="DataAmbalare" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Recepties">
+      <EntityTypeMapping TypeName="Store1Model.Receptie">
+        <MappingFragment StoreEntitySet="Receptie">
+          <ScalarProperty Name="IDReceptie" ColumnName="IDReceptie" />
+          <ScalarProperty Name="IDProdus" ColumnName="IDProdus" />
+          <ScalarProperty Name="IDPersoana" ColumnName="IDPersoana" />
+          <ScalarProperty Name="DataRecetie" ColumnName="DataRecetie" />
+          <ScalarProperty Name="Observatii" ColumnName="Observatii" />
+          <ScalarProperty Name="Rebut" ColumnName="Rebut" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipProdus">
+      <EntityTypeMapping TypeName="Store1Model.TipProdu">
+        <MappingFragment StoreEntitySet="TipProdus">
+          <ScalarProperty Name="IDTipProdus" ColumnName="IDTipProdus" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="UnitateMasura" ColumnName="UnitateMasura" />
+          <ScalarProperty Name="PretKg" ColumnName="PretKg" />
+          <ScalarProperty Name="Cantitate" ColumnName="Cantitate" />
+          <ScalarProperty Name="TermenGarantie" ColumnName="TermenGarantie" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vanzaris">
+      <EntityTypeMapping TypeName="Store1Model.Vanzari">
+        <MappingFragment StoreEntitySet="Vanzari">
+          <ScalarProperty Name="IDVanzari" ColumnName="IDVanzari" />
+          <ScalarProperty Name="IDProdus" ColumnName="IDProdus" />
+          <ScalarProperty Name="DataVanzare" ColumnName="DataVanzare" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="actualizarePret" FunctionName="Store1Model.Store.actualizarePret" />
+    <FunctionImportMapping FunctionImportName="CodQR" FunctionName="Store1Model.Store.CodQR" />
+    <FunctionImportMapping FunctionImportName="completVerificareVanzari" FunctionName="Store1Model.Store.completVerificareVanzari">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Store1Model.completVerificareVanzari_Result">
+          <ScalarProperty Name="TermenGarantie" ColumnName="TermenGarantie" />
+          <ScalarProperty Name="DataRecetie" ColumnName="DataRecetie" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="deleteAmbalaj" FunctionName="Store1Model.Store.deleteAmbalaj">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Store1Model.deleteAmbalaj_Result">
+          <ScalarProperty Name="IDAmbalaj" ColumnName="IDAmbalaj" />
+          <ScalarProperty Name="Denumire" ColumnName="Denumire" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="deletePersoana" FunctionName="Store1Model.Store.deletePersoana">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Store1Model.deletePersoana_Result">
+          <ScalarProperty Name="IDPersoana" ColumnName="IDPersoana" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="deleteProduse" FunctionName="Store1Model.Store.deleteProduse">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Store1Model.deleteProduse_Result">
+          <ScalarProperty Name="IDProdus" ColumnName="IDProdus" />
+          <ScalarProperty Name="IDAmbalaj" ColumnName="IDAmbalaj" />
+          <ScalarProperty Name="IDPersoana" ColumnName="IDPersoana" />
+          <ScalarProperty Name="DataAmbalare" ColumnName="DataAmbalare" />
+          <ScalarProperty Name="IDTipProdus" ColumnName="IDTipProdus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="deleteReceptie" FunctionName="Store1Model.Store.deleteReceptie">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Store1Model.deleteReceptie_Result">
+          <ScalarProperty Name="IDReceptie" ColumnName="IDReceptie" />
+          <ScalarProperty Name="IDProdus" ColumnName="IDProdus" />
+          <ScalarProperty Name="IDPersoana" ColumnName="IDPersoana" />
+          <ScalarProperty Name="DataReceptie" ColumnName="DataReceptie" />
+          <ScalarProperty Name="Observatii" ColumnName="Observatii" />
+          <ScalarProperty Name="Rebut" ColumnName="Rebut" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="deleteTipProduse" FunctionName="Store1Model.Store.deleteTipProduse">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Store1Model.deleteTipProduse_Result">
+          <ScalarProperty Name="IDTipProdus" ColumnName="IDTipProdus" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="UnitateMasura" ColumnName="UnitateMasura" />
+          <ScalarProperty Name="PretKg" ColumnName="PretKg" />
+          <ScalarProperty Name="Cantitate" ColumnName="Cantitate" />
+          <ScalarProperty Name="TermenGarantie" ColumnName="TermenGarantie" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="deleteVanzari" FunctionName="Store1Model.Store.deleteVanzari">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Store1Model.deleteVanzari_Result">
+          <ScalarProperty Name="IDVanzari" ColumnName="IDVanzari" />
+          <ScalarProperty Name="IDProdus" ColumnName="IDProdus" />
+          <ScalarProperty Name="DataVanzare" ColumnName="DataVanzare" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="InfoCod" FunctionName="Store1Model.Store.InfoCod">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Store1Model.InfoCod_Result">
+          <ScalarProperty Name="IDProdus" ColumnName="IDProdus" />
+          <ScalarProperty Name="NumeTipProdus" ColumnName="NumeTipProdus" />
+          <ScalarProperty Name="DataExpirare" ColumnName="DataExpirare" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="insertAmbalaj" FunctionName="Store1Model.Store.insertAmbalaj" />
+    <FunctionImportMapping FunctionImportName="insertPersoana" FunctionName="Store1Model.Store.insertPersoana" />
+    <FunctionImportMapping FunctionImportName="insertProduse" FunctionName="Store1Model.Store.insertProduse" />
+    <FunctionImportMapping FunctionImportName="insertReceptie" FunctionName="Store1Model.Store.insertReceptie" />
+    <FunctionImportMapping FunctionImportName="insertTipProduse" FunctionName="Store1Model.Store.insertTipProduse" />
+    <FunctionImportMapping FunctionImportName="insertVanzari" FunctionName="Store1Model.Store.insertVanzari" />
+    <FunctionImportMapping FunctionImportName="Login_Sel" FunctionName="Store1Model.Store.Login_Sel" />
+    <FunctionImportMapping FunctionImportName="modificareStatusProdus" FunctionName="Store1Model.Store.modificareStatusProdus" />
+    <FunctionImportMapping FunctionImportName="Project_Del" FunctionName="Store1Model.Store.Project_Del" />
+    <FunctionImportMapping FunctionImportName="Project_Ins" FunctionName="Store1Model.Store.Project_Ins" />
+    <FunctionImportMapping FunctionImportName="Project_Sel" FunctionName="Store1Model.Store.Project_Sel" />
+    <FunctionImportMapping FunctionImportName="Project_Upd" FunctionName="Store1Model.Store.Project_Upd" />
+    <FunctionImportMapping FunctionImportName="selectAmbalaj" FunctionName="Store1Model.Store.selectAmbalaj">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Store1Model.selectAmbalaj_Result">
+          <ScalarProperty Name="IDAmbalaj" ColumnName="IDAmbalaj" />
+          <ScalarProperty Name="Denumire" ColumnName="Denumire" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="selectPersoana" FunctionName="Store1Model.Store.selectPersoana">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Store1Model.selectPersoana_Result">
+          <ScalarProperty Name="IDPersoana" ColumnName="IDPersoana" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="selectProdus" FunctionName="Store1Model.Store.selectProdus">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Store1Model.selectProdus_Result">
+          <ScalarProperty Name="IDProdus" ColumnName="IDProdus" />
+          <ScalarProperty Name="TipProdus" ColumnName="TipProdus" />
+          <ScalarProperty Name="PretKg" ColumnName="PretKg" />
+          <ScalarProperty Name="DataAmbalare" ColumnName="DataAmbalare" />
+          <ScalarProperty Name="Ambalaj" ColumnName="Ambalaj" />
+          <ScalarProperty Name="Persoana" ColumnName="Persoana" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="selectReceptie" FunctionName="Store1Model.Store.selectReceptie">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Store1Model.selectReceptie_Result">
+          <ScalarProperty Name="IDReceptie" ColumnName="IDReceptie" />
+          <ScalarProperty Name="IDProdus" ColumnName="IDProdus" />
+          <ScalarProperty Name="IDPersoana" ColumnName="IDPersoana" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="DataRecetie" ColumnName="DataRecetie" />
+          <ScalarProperty Name="Observatii" ColumnName="Observatii" />
+          <ScalarProperty Name="Rebut" ColumnName="Rebut" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="selectTipProduse" FunctionName="Store1Model.Store.selectTipProduse">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Store1Model.selectTipProduse_Result">
+          <ScalarProperty Name="IDTipProdus" ColumnName="IDTipProdus" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="UnitateMasura" ColumnName="UnitateMasura" />
+          <ScalarProperty Name="PretKg" ColumnName="PretKg" />
+          <ScalarProperty Name="Cantitate" ColumnName="Cantitate" />
+          <ScalarProperty Name="TermenGarantie" ColumnName="TermenGarantie" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="selectVanzari" FunctionName="Store1Model.Store.selectVanzari">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Store1Model.selectVanzari_Result">
+          <ScalarProperty Name="IDVanzari" ColumnName="IDVanzari" />
+          <ScalarProperty Name="IDProdus" ColumnName="IDProdus" />
+          <ScalarProperty Name="IDTipProdus" ColumnName="IDTipProdus" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="DataVanzare" ColumnName="DataVanzare" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Store1Model.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Store1Model.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Store1Model.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Store1Model.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Store1Model.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Store1Model.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Store1Model.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Store1Model.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Store1Model.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="updateAmbalaj" FunctionName="Store1Model.Store.updateAmbalaj" />
+    <FunctionImportMapping FunctionImportName="updatePersoana" FunctionName="Store1Model.Store.updatePersoana" />
+    <FunctionImportMapping FunctionImportName="updateProduse" FunctionName="Store1Model.Store.updateProduse" />
+    <FunctionImportMapping FunctionImportName="updateReceptie" FunctionName="Store1Model.Store.updateReceptie" />
+    <FunctionImportMapping FunctionImportName="updateTipProduse" FunctionName="Store1Model.Store.updateTipProduse" />
+    <FunctionImportMapping FunctionImportName="updateVanzari" FunctionName="Store1Model.Store.updateVanzari" />
+    <FunctionImportMapping FunctionImportName="VAR1VerificareValabilitate" FunctionName="Store1Model.Store.VAR1VerificareValabilitate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Store1Model.VAR1VerificareValabilitate_Result">
+          <ScalarProperty Name="IDVanzari" ColumnName="IDVanzari" />
+          <ScalarProperty Name="DataAmbalare" ColumnName="DataAmbalare" />
+          <ScalarProperty Name="TermenGarantie" ColumnName="TermenGarantie" />
+          <ScalarProperty Name="statusProdusVandut" ColumnName="statusProdusVandut" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="VAR1VerificareVanzari" FunctionName="Store1Model.Store.VAR1VerificareVanzari">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Store1Model.VAR1VerificareVanzari_Result">
+          <ScalarProperty Name="IDVanzari" ColumnName="IDVanzari" />
+          <ScalarProperty Name="DataRecetie" ColumnName="DataRecetie" />
+          <ScalarProperty Name="DataVanzare" ColumnName="DataVanzare" />
+          <ScalarProperty Name="statusProdus" ColumnName="statusProdus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="verificareLaReceptie" FunctionName="Store1Model.Store.verificareLaReceptie">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Store1Model.verificareLaReceptie_Result">
+          <ScalarProperty Name="TermenGarantie" ColumnName="TermenGarantie" />
+          <ScalarProperty Name="DataRecetie" ColumnName="DataRecetie" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="verificareStoc" FunctionName="Store1Model.Store.verificareStoc">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Store1Model.verificareStoc_Result">
+          <ScalarProperty Name="IDProdus" ColumnName="IDProdus" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,353 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|E:\\Proiecte personale\\Primuproiect\\FirstProject\\firstproject\\view\\generareqrcodebarcodeview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|solutionrelative:firstproject\\view\\generareqrcodebarcodeview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|E:\\Proiecte personale\\Primuproiect\\FirstProject\\firstproject\\view\\receptiaview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|solutionrelative:firstproject\\view\\receptiaview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|E:\\Proiecte personale\\Primuproiect\\FirstProject\\firstproject\\view\\manageriereelemview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|solutionrelative:firstproject\\view\\manageriereelemview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|e:\\proiecte personale\\primuproiect\\firstproject\\firstproject\\models\\store1.context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|solutionrelative:firstproject\\models\\store1.context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|E:\\Proiecte personale\\Primuproiect\\FirstProject\\firstproject\\viewmodel\\manageriereelemvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|solutionrelative:firstproject\\viewmodel\\manageriereelemvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|E:\\Proiecte personale\\Primuproiect\\FirstProject\\firstproject\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|solutionrelative:firstproject\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|e:\\proiecte personale\\primuproiect\\firstproject\\firstproject\\view\\adaugareelemview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|solutionrelative:firstproject\\view\\adaugareelemview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|E:\\Proiecte personale\\Primuproiect\\FirstProject\\firstproject\\view\\adaugareelemview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|solutionrelative:firstproject\\view\\adaugareelemview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|E:\\Proiecte personale\\Primuproiect\\FirstProject\\firstproject\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|solutionrelative:firstproject\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|E:\\Proiecte personale\\Primuproiect\\FirstProject\\firstproject\\viewmodel\\mainwindowvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|solutionrelative:firstproject\\viewmodel\\mainwindowvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|E:\\Proiecte personale\\Primuproiect\\FirstProject\\firstproject\\helpers\\basevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|solutionrelative:firstproject\\helpers\\basevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|E:\\Proiecte personale\\Primuproiect\\FirstProject\\firstproject\\helpers\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|solutionrelative:firstproject\\helpers\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|E:\\Proiecte personale\\Primuproiect\\FirstProject\\firstproject\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|solutionrelative:firstproject\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|E:\\Proiecte personale\\Primuproiect\\FirstProject\\firstproject\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|solutionrelative:firstproject\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|E:\\Proiecte personale\\Primuproiect\\FirstProject\\firstproject\\view\\vanzareview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|solutionrelative:firstproject\\view\\vanzareview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|E:\\Proiecte personale\\Primuproiect\\FirstProject\\firstproject\\view\\generareqrcodebarcodeview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|solutionrelative:firstproject\\view\\generareqrcodebarcodeview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|E:\\Proiecte personale\\Primuproiect\\FirstProject\\firstproject\\view\\vanzareview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|solutionrelative:firstproject\\view\\vanzareview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|E:\\Proiecte personale\\Primuproiect\\FirstProject\\firstproject\\view\\receptiaview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|solutionrelative:firstproject\\view\\receptiaview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|E:\\Proiecte personale\\Primuproiect\\FirstProject\\firstproject\\view\\manageriereelemview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|solutionrelative:firstproject\\view\\manageriereelemview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|E:\\Proiecte personale\\Primuproiect\\FirstProject\\firstproject\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{FC202014-BD1C-4E76-82B5-1DFF6D15CD1C}|FirstProject\\FirstProject.csproj|solutionrelative:firstproject\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Store1.Context.cs",
+              "DocumentMoniker": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\Models\\Store1.Context.cs",
+              "RelativeDocumentMoniker": "FirstProject\\Models\\Store1.Context.cs",
+              "ToolTip": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\Models\\Store1.Context.cs",
+              "RelativeToolTip": "FirstProject\\Models\\Store1.Context.cs",
+              "ViewState": "AQIAAEQBAAAAAAAAAAAhwFQBAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-09T16:06:03.138Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ManageriereElemVM.cs",
+              "DocumentMoniker": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\ViewModel\\ManageriereElemVM.cs",
+              "RelativeDocumentMoniker": "FirstProject\\ViewModel\\ManageriereElemVM.cs",
+              "ToolTip": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\ViewModel\\ManageriereElemVM.cs",
+              "RelativeToolTip": "FirstProject\\ViewModel\\ManageriereElemVM.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T18:53:00.058Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "BaseVM.cs",
+              "DocumentMoniker": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\Helpers\\BaseVM.cs",
+              "RelativeDocumentMoniker": "FirstProject\\Helpers\\BaseVM.cs",
+              "ToolTip": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\Helpers\\BaseVM.cs",
+              "RelativeToolTip": "FirstProject\\Helpers\\BaseVM.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAA+AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T13:53:25.186Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ReceptiaView.xaml.cs",
+              "DocumentMoniker": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\View\\ReceptiaView.xaml.cs",
+              "RelativeDocumentMoniker": "FirstProject\\View\\ReceptiaView.xaml.cs",
+              "ToolTip": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\View\\ReceptiaView.xaml.cs",
+              "RelativeToolTip": "FirstProject\\View\\ReceptiaView.xaml.cs",
+              "ViewState": "AQIAACABAAAAAAAAAAAgwDgBAABQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T14:40:45.632Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AdaugareElemView.xaml.cs",
+              "DocumentMoniker": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\View\\AdaugareElemView.xaml.cs",
+              "RelativeDocumentMoniker": "FirstProject\\View\\AdaugareElemView.xaml.cs",
+              "ToolTip": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\View\\AdaugareElemView.xaml.cs",
+              "RelativeToolTip": "FirstProject\\View\\AdaugareElemView.xaml.cs",
+              "ViewState": "AQIAAGQAAAAAAAAAAAAgwIcAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T14:02:28.751Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GenerareQRCodeBarcodeView.xaml.cs",
+              "DocumentMoniker": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\View\\GenerareQRCodeBarcodeView.xaml.cs",
+              "RelativeDocumentMoniker": "FirstProject\\View\\GenerareQRCodeBarcodeView.xaml.cs",
+              "ToolTip": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\View\\GenerareQRCodeBarcodeView.xaml.cs",
+              "RelativeToolTip": "FirstProject\\View\\GenerareQRCodeBarcodeView.xaml.cs",
+              "ViewState": "AQIAAIQAAAAAAAAAAAAYwBQAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T16:18:59.525Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ManageriereElemView.xaml.cs",
+              "DocumentMoniker": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\View\\ManageriereElemView.xaml.cs",
+              "RelativeDocumentMoniker": "FirstProject\\View\\ManageriereElemView.xaml.cs",
+              "ToolTip": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\View\\ManageriereElemView.xaml.cs",
+              "RelativeToolTip": "FirstProject\\View\\ManageriereElemView.xaml.cs",
+              "ViewState": "AQIAAPcAAAAAAAAAAAAYwPkAAAA/AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T14:07:07.018Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "RelayCommand.cs",
+              "DocumentMoniker": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\Helpers\\RelayCommand.cs",
+              "RelativeDocumentMoniker": "FirstProject\\Helpers\\RelayCommand.cs",
+              "ToolTip": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\Helpers\\RelayCommand.cs",
+              "RelativeToolTip": "FirstProject\\Helpers\\RelayCommand.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACMAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T13:54:14.595Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "App.config",
+              "DocumentMoniker": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\App.config",
+              "RelativeDocumentMoniker": "FirstProject\\App.config",
+              "ToolTip": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\App.config",
+              "RelativeToolTip": "FirstProject\\App.config",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAADVAQAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-10-08T13:43:12.539Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AdaugareElemView.xaml",
+              "DocumentMoniker": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\View\\AdaugareElemView.xaml",
+              "RelativeDocumentMoniker": "FirstProject\\View\\AdaugareElemView.xaml",
+              "ToolTip": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\View\\AdaugareElemView.xaml",
+              "RelativeToolTip": "FirstProject\\View\\AdaugareElemView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-08T14:00:17.307Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MainWindowVM.cs",
+              "DocumentMoniker": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\ViewModel\\MainWindowVM.cs",
+              "RelativeDocumentMoniker": "FirstProject\\ViewModel\\MainWindowVM.cs",
+              "ToolTip": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\ViewModel\\MainWindowVM.cs",
+              "RelativeToolTip": "FirstProject\\ViewModel\\MainWindowVM.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAwBsAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T13:56:18.252Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "GenerareQRCodeBarcodeView.xaml",
+              "DocumentMoniker": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\View\\GenerareQRCodeBarcodeView.xaml",
+              "RelativeDocumentMoniker": "FirstProject\\View\\GenerareQRCodeBarcodeView.xaml",
+              "ToolTip": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\View\\GenerareQRCodeBarcodeView.xaml",
+              "RelativeToolTip": "FirstProject\\View\\GenerareQRCodeBarcodeView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-08T16:14:59.939Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "VanzareView.xaml",
+              "DocumentMoniker": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\View\\VanzareView.xaml",
+              "RelativeDocumentMoniker": "FirstProject\\View\\VanzareView.xaml",
+              "ToolTip": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\View\\VanzareView.xaml",
+              "RelativeToolTip": "FirstProject\\View\\VanzareView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-08T14:46:07.288Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ReceptiaView.xaml",
+              "DocumentMoniker": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\View\\ReceptiaView.xaml",
+              "RelativeDocumentMoniker": "FirstProject\\View\\ReceptiaView.xaml",
+              "ToolTip": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\View\\ReceptiaView.xaml",
+              "RelativeToolTip": "FirstProject\\View\\ReceptiaView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-08T14:40:24.437Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ManageriereElemView.xaml",
+              "DocumentMoniker": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\View\\ManageriereElemView.xaml",
+              "RelativeDocumentMoniker": "FirstProject\\View\\ManageriereElemView.xaml",
+              "ToolTip": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\View\\ManageriereElemView.xaml",
+              "RelativeToolTip": "FirstProject\\View\\ManageriereElemView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-08T14:06:40.267Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "FirstProject\\MainWindow.xaml",
+              "ToolTip": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\MainWindow.xaml",
+              "RelativeToolTip": "FirstProject\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-08T13:04:44.878Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "packages.config",
+              "DocumentMoniker": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\packages.config",
+              "RelativeDocumentMoniker": "FirstProject\\packages.config",
+              "ToolTip": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\packages.config",
+              "RelativeToolTip": "FirstProject\\packages.config",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-10-08T13:43:06.821Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "FirstProject\\MainWindow.xaml.cs",
+              "ToolTip": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\MainWindow.xaml.cs",
+              "RelativeToolTip": "FirstProject\\MainWindow.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T13:04:44.188Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "App.xaml",
+              "DocumentMoniker": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\App.xaml",
+              "RelativeDocumentMoniker": "FirstProject\\App.xaml",
+              "ToolTip": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\App.xaml",
+              "RelativeToolTip": "FirstProject\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-08T13:43:09.998Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "VanzareView.xaml.cs",
+              "DocumentMoniker": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\View\\VanzareView.xaml.cs",
+              "RelativeDocumentMoniker": "FirstProject\\View\\VanzareView.xaml.cs",
+              "ToolTip": "E:\\Proiecte personale\\Primuproiect\\FirstProject\\FirstProject\\View\\VanzareView.xaml.cs",
+              "RelativeToolTip": "FirstProject\\View\\VanzareView.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T14:46:28.924Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
